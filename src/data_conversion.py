@@ -340,8 +340,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--simulation", required=True, type=str, help="simulation name (e.g. m12i)")
     parser.add_argument("-l", "--location", required=True, type=str, help="local, expansion or katana")
-    parser.add_argument("-a", "--iteration_low_limit", required=True, type=int, help="lower bound iteration")
-    parser.add_argument("-b", "--iteration_up_limit", required=True, type=int, help="upper bound iteration")
+    # parser.add_argument("-a", "--iteration_low_limit", required=True, type=int, help="lower bound iteration")
+    # parser.add_argument("-b", "--iteration_up_limit", required=True, type=int, help="upper bound iteration")
     parser.add_argument("-c", "--cores", required=False, type=int, help="number of cores to run process on")
     args = parser.parse_args()
 
@@ -358,8 +358,15 @@ if __name__ == "__main__":
         raise RuntimeError("Incorrect simulation location provided. Must be local, katana or expansion")
     fir_dir = sim_dir + sim + "/" + sim + "_res7100"
 
-    it_low, it_up = args.iteration_low_limit, args.iteration_up_limit
-    it_lst = np.arange(it_low, it_up + 1, dtype=int)
+    # it_low, it_up = args.iteration_low_limit, args.iteration_up_limit
+    # it_lst = np.arange(it_low, it_up + 1, dtype=int)
+
+    it_csv = sim_dir + "iteration_check.csv"
+    it_df = pd.read_csv(it_csv)
+    it_msk = it_df[sim] == 0
+    it_id_lst = it_df["it_id"][it_msk].values
+    it_lst = np.array([int(it_id[2:]) for it_id in it_id_lst])
+    print(it_lst)
 
     cores = args.cores
     if cores is None:
