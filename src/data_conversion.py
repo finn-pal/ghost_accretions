@@ -340,8 +340,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--simulation", required=True, type=str, help="simulation name (e.g. m12i)")
     parser.add_argument("-l", "--location", required=True, type=str, help="local, expansion or katana")
-    # parser.add_argument("-a", "--iteration_low_limit", required=True, type=int, help="lower bound iteration")
-    # parser.add_argument("-b", "--iteration_up_limit", required=True, type=int, help="upper bound iteration")
     parser.add_argument("-c", "--cores", required=False, type=int, help="number of cores to run process on")
     args = parser.parse_args()
 
