@@ -8,7 +8,6 @@ import h5py
 import numpy as np
 import pandas as pd
 import utilities as ut
-from tqdm import tqdm
 
 _global_halt = None
 
