@@ -1,6 +1,7 @@
 # Ignore the renv directory and lock file
 .venv/
 .venv_old/
+.venv312/
 .vscode/
 data/
 notebooks/
